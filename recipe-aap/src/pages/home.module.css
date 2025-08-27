@@ -1,0 +1,46 @@
+.big{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    margin: 5rem auto 1rem auto; /* top auto bottom auto */
+    max-width: 800px;            /* or whatever width fits */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.imgLogo{
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+}
+
+.text{
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.imgHs{
+    border-radius: 50%; 
+    height: 80px;
+    width: 80px;
+}
+
+.cards{
+    padding: 3rem 1rem;
+    display: flex;
+    gap: 5rem;
+
+}
