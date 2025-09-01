@@ -9,7 +9,7 @@ import favoriteImg from '../assets/favorite.png'
 import calorieImg from '../assets/calories.png'
 
 
-
+// style file improted
 import styles from './home.module.css'
 
 
@@ -21,24 +21,24 @@ function Home(){
 
             {/* 3 div total of REcipes, favorities and calories */}
 
-            <div>
-                <div>
+            <div className={styles.dashboard}>
+                <div className={styles.dashboardItems}>
                     <img src={recipeImg} alt="Recpice" />
-                    <div>
+                    <div className={styles.dashboardItem}>
                         <p>Total Recipes</p>
                         <h1>0</h1>
                     </div>
                 </div>
-                <div>
+                <div className={styles.dashboardItems}>
                     <img src={favoriteImg} alt="favorite" />
-                    <div>
+                    <div className={styles.dashboardItem}>
                         <p>Total Favorites</p>
                         <h1>0</h1>
                     </div>
                 </div>
-                <div>
+                <div className={styles.dashboardItems}>
                     <img src={calorieImg} alt="Calories" />
-                    <div>
+                    <div className={styles.dashboardItem}>
                         <p>Total calories</p>
                         <h1>0</h1>
                     </div>
@@ -56,8 +56,8 @@ function Home(){
                     <p>From quick weeknight dinners to weekend treats, find the perfect recipe for every occasion!</p>
                 </div>
                 <div className={styles.cards}>
-                    <Link>
-                        <button>Add your recipe</button>
+                    <Link to="/recipes" className={styles.noLinkStyle}>
+                        <button className={styles.button}>Add your recipe</button>
                     </Link>
                 </div>
             </div>
