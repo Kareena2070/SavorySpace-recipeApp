@@ -3,9 +3,9 @@ import styles from './recipe.module.css'
 import { useState } from 'react'
 
 
-function Recipes(){
+function Recipes({recipesList, setRecipesList}){
 
-    const [fromData, setFromData] = useState({
+    const [formData, setFormData] = useState({
         title: "",
         ingredients: "",
         calories: "",
@@ -14,16 +14,17 @@ function Recipes(){
     });
 
     const handleChange = (e)=>{
-        setFromData({...fromData, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
-
-    const [recipesList, setRecipesList] = useState([]);
 
     const handleSumbit = (e)=>{
         e.preventDefault();
-        setRecipesList([...recipesList, fromData])
-        setFromData({title: "", ingredients: "", calories: "", instruction: "", image: ""})
+        setRecipesList([...recipesList, formData])
+        setFormData({title: "", ingredients: "", calories: "", instruction: "", image: ""})
+        setShowForm(false);
     }
+
+    const [showForm, setShowForm] = useState(false)
 
    
     return(
@@ -31,42 +32,51 @@ function Recipes(){
             <div className={styles.container}>
                 <h1>Our Recipes</h1>
 
-                <form onSubmit={handleSumbit}>
-                    <label htmlFor="title">Recipe title</label>
-                    <input type="text" name = "title"
-                    value={fromData.title}
-                    onChange={handleChange}
-                    required/>
 
-                    <label htmlFor="calories">Calories</label>
-                    <input type="number" name='calories'
-                    value={fromData.calories}
-                    onChange={handleChange}
-                    required />
+                {showForm ? (   
+                    <form onSubmit={handleSumbit} className={styles.form}>
+                        <label htmlFor="title">Recipe title</label>
+                        <input type="text" name = "title"
+                        value={formData.title}
+                        onChange={handleChange}
+                        required/>
 
-                    <label htmlFor="ingredients">Ingredients</label>
-                    <textarea placeholder='Enter each ingredient on new line...'
-                    name='ingredients'
-                    value={fromData.ingredients} 
-                    onChange={handleChange}
-                    required></textarea>
+                        <label htmlFor="calories">Calories</label>
+                        <input type="number" name='calories'
+                        value={formData.calories}
+                        onChange={handleChange}
+                        required />
 
-                    <label htmlFor="instruction">Instruction</label>
-                    <textarea placeholder='Step-by-step cooking instructions'
-                    name='instruction'
-                    value={fromData.instruction}
-                    onChange={handleChange}
-                    ></textarea>
+                        <label htmlFor="ingredients">Ingredients</label>
+                        <textarea placeholder='Enter each ingredient on new line...'
+                        name='ingredients'
+                        value={formData.ingredients} 
+                        onChange={handleChange}
+                        required></textarea>
 
-                    <label htmlFor="image">Image URL(Optional)</label>
-                    <input type="text"
-                    name='image'
-                    value={fromData.image}
-                    onChange={handleChange}
-                    />
+                        <label htmlFor="instruction">Instruction</label>
+                        <textarea placeholder='Step-by-step cooking instructions'
+                        name='instruction'
+                        value={formData.instruction}
+                        onChange={handleChange}
+                        ></textarea>
 
-                    <button>Add Recipe</button>
-                </form>
+                        <label htmlFor="image">Image URL(Optional)</label>
+                        <input type="text"
+                        name='image'
+                        value={formData.image}
+                        onChange={handleChange}
+                        />
+                        <div className={styles.groupButton}>
+                            <button type='button' onClick={()=> setShowForm(false)}>Cancel</button>
+                            <button type='submit' >Add Recipe</button>
+                        </div>
+                        
+                    </form>
+
+                ):
+                    <button onClick={()=> setShowForm(true)} className={styles.addButton}>Add New Recipe</button>
+                } 
 
 
 
