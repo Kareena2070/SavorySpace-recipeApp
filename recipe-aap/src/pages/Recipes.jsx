@@ -1,9 +1,11 @@
+// style file imported
 import styles from './recipe.module.css'
-
+// default image for recipe
+import defaultImg from '../assets/defaultImg.png'
 import { useState } from 'react'
 
 
-function Recipes({recipesList, setRecipesList}){
+function Recipes({recipesList, setRecipesList, setShowForm, showForm}){
 
     const [formData, setFormData] = useState({
         title: "",
@@ -24,7 +26,15 @@ function Recipes({recipesList, setRecipesList}){
         setShowForm(false);
     }
 
-    const [showForm, setShowForm] = useState(false)
+    const [expended, setExpended] = useState(null)
+
+    const handleDelete = (id)=> {
+        setRecipesList((prev)=> prev.filter((_, i)=> i !==id))
+    }
+
+
+
+    
 
    
     return(
@@ -68,7 +78,7 @@ function Recipes({recipesList, setRecipesList}){
                         onChange={handleChange}
                         />
                         <div className={styles.groupButton}>
-                            <button type='button' onClick={()=> setShowForm(false)}>Cancel</button>
+                            <button type='button' onClick={()=> setShowForm(false) }>Cancel</button>
                             <button type='submit' >Add Recipe</button>
                         </div>
                         
@@ -81,13 +91,42 @@ function Recipes({recipesList, setRecipesList}){
 
 
                 <div className={styles.lists}>
-                    {recipesList.map((recipe, id)=>{
-                        return <div className={styles.list} key={id}>
-                                    <img src={recipe.image} alt={recipe.title} />
-                                    <p>{recipe.calories} calories</p>
-                                    <p>{recipe.ingredients}</p>
+
+                    {recipesList.length>0?(
+                        expended !== null ? (
+                            <div className={styles.list} >
+                                <img src={recipesList[expended].image || defaultImg} alt={recipesList[expended].title} />
+                                <h1>{recipesList[expended].title}</h1>
+                                <p>{recipesList[expended].calories}</p>
+                                <p>{recipesList[expended].ingredients}</p>
+                                <p>{recipesList[expended].instruction}</p>
+
+                                <div className={styles.Gbutton}>
+                                    <button className={styles.btn3}  onClick={()=> setExpended(null)}>Back to All Recipes</button>
+                                    <button className={styles.btn2  } onClick={()=> {handleDelete(expended); setExpended(null)}}>Delete</button>
                                 </div>
-                             })}
+                            </div>
+                        ) : (
+                            recipesList.map((recipe, id)=>(
+                                    <div className={styles.list} key={id}>
+                                            <img src={recipe.image || defaultImg} alt={recipe.title} />
+                                            <h1>{recipe.title}</h1>
+                                            <p>{recipe.calories} calories</p>
+                                            
+                                            <div className={styles.Gbutton}>
+                                                <button className={styles.btn1} onClick={()=> setExpended(id)}>Show Details</button>
+                                                <button className={styles.btn2} onClick={()=> handleDelete(id)}>Delete</button>
+                                            </div>
+                                        </div>
+                            ))
+                        )
+                        ): (
+                            <p className={styles.RecipeMess}>No recipes yet. Click "Add Your Recipe" to start.</p>
+                        )
+                    }
+
+
+                 
                 </div>
             </div>
         </div>
