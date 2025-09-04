@@ -13,7 +13,7 @@ import calorieImg from '../assets/calories.png'
 import styles from './home.module.css'
 
 
-function Home(){
+function Home({setShowForm}){
 
 
     return(
@@ -57,7 +57,7 @@ function Home(){
                 </div>
                 <div className={styles.cards}>
                     <Link to="/recipes" className={styles.noLinkStyle}>
-                        <button className={styles.button}>Add your recipe</button>
+                        <button className={styles.button} onClick={()=>setShowForm(true) }>Add your recipe</button>
                     </Link>
                 </div>
             </div>

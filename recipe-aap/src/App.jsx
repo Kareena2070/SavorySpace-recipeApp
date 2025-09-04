@@ -13,30 +13,41 @@ import { useState } from 'react'
 function App() {
 
   const [recipesList, setRecipesList] = useState([]);
-  // const aadRecipe = (recipe) => setRecipesList((prev)=> [...prev, recipe])
+  const [showForm, setShowForm] = useState(false)
+  const [isopen, setIsOpen] = useState(false)
+  
   
 
   return (
     <>
       <nav className='navbar'>
         
-        <ul className='nav-links'>
-          <li><Link to={"/"} className="no-link-style" >Home</Link></li>
-          <li><Link to={"/recipes"} className="no-link-style" >Recipes</Link></li>
-          <li><Link to={"/about"} className="no-link-style" >About</Link></li>
-          <li><Link to={"/contact"} className="no-link-style" >Contact</Link></li>
+        <button className='hamburger'
+        onClick={()=> setIsOpen(!isopen)}>
+        ☰
+        </button>
+        
+        <ul className={`nav-links ${isopen? "show": ""}`}>
+          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"/recipes"}  >Recipes</Link></li>
+          <li><Link to={"/about"} >About</Link></li>
+          <li><Link to={"/contact"}  >Contact</Link></li>
         </ul>
+
       </nav>
 
 
 
 
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home
+        setShowForm={setShowForm}
+        />}/>
         <Route path='/recipes' element={<Recipes
         recipesList ={recipesList}
-        // addRecipe ={addRecipe}
         setRecipesList={setRecipesList}
+        showForm={showForm}
+        setShowForm={setShowForm}
         />}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
