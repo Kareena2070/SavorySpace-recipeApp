@@ -6,6 +6,9 @@ import Home from './pages/Home'
 import Recipes from './pages/Recipes'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Favorities from './pages/favorite'
+
+import "./pages/favorite.css"
 
 import { useState } from 'react'
 
@@ -36,6 +39,7 @@ function App() {
         <ul className={`nav-links ${isopen? "show": ""}`}>
           <li><Link to={"/"}>Home</Link></li>
           <li><Link to={"/recipes"}  >Recipes</Link></li>
+          <li><Link to={"/favorites"}>Favorite</Link></li>
           <li><Link to={"/about"} >About</Link></li>
           <li><Link to={"/contact"}  >Contact</Link></li>
         </ul>
@@ -60,6 +64,17 @@ function App() {
         />}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route
+        path='/favorites'
+        element={
+        <Favorities
+          recipes={recipesList}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
+  }
+/>
+
       </Routes>
     </>
   )
