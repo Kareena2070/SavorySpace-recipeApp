@@ -5,7 +5,7 @@ import defaultImg from '../assets/defaultImg.png'
 import { useState } from 'react'
 
 
-function Recipes({recipesList, setRecipesList, setShowForm, showForm}){
+function Recipes({recipesList, setRecipesList, setShowForm, showForm,  favorites,setFavorites }){
 
     const [formData, setFormData] = useState({
         title: "",
@@ -112,7 +112,11 @@ function Recipes({recipesList, setRecipesList, setShowForm, showForm}){
                                             <img src={recipe.image || defaultImg} alt={recipe.title} />
                                             <h1>{recipe.title}</h1>
                                             <p>{recipe.calories} calories</p>
-                                            
+                                            <div onClick={() =>
+                                                    setFavorites((prev) =>
+                                                    prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id])}>
+                                                    {favorites.includes(id) ? "★ Unfavorite" : "☆ Favorite"}
+                                            </div>
                                             <div className={styles.Gbutton}>
                                                 <button className={styles.btn1} onClick={()=> setExpended(id)}>Show Details</button>
                                                 <button className={styles.btn2} onClick={()=> handleDelete(id)}>Delete</button>

@@ -15,7 +15,13 @@ function App() {
   const [recipesList, setRecipesList] = useState([]);
   const [showForm, setShowForm] = useState(false)
   const [isopen, setIsOpen] = useState(false)
+  const [favorites, setFavorites] = useState([]);   // ✅ favorites state
   
+  const toggleFavorite = (id) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+    );
+  };
   
 
   return (
@@ -48,6 +54,9 @@ function App() {
         setRecipesList={setRecipesList}
         showForm={showForm}
         setShowForm={setShowForm}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        toggleFavoritet={toggleFavorite}
         />}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
