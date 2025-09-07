@@ -6,7 +6,9 @@
 }
 
 body{
-  background-color: #fbeedf;
+  /* background-color: #fbeedf; */
+  background-color: #fff8f0;
+  color: black;
   font-family: Arial, sans-serif;
 }
 
@@ -35,11 +37,11 @@ body{
   text-decoration: none;
 }
 .nav-links a:hover {
-  color: #fb936d;
+  color: #e67e22;
 }
 
 .nav-links a.active {
-  color: #fe8b27; 
+  color: #d35400;
   font-weight: bold; 
 }
 
