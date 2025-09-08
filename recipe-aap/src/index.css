@@ -1,95 +1,101 @@
-*{
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-
 }
 
-body{
-  /* background-color: #fbeedf; */
+body {
   background-color: #fff8f0;
   color: black;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-
-.navbar{
+/* Navbar base */
+.navbar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* space between logo and links */
   align-items: center;
-  padding: 1rem 20rem;
-  box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.3);
+  padding: 1rem 5%; 
   background-color: white;
+  box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.3);
 }
 
-.nav-links{
+/* Nav links */
+.nav-links {
   display: flex;
   gap: 2rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
-
-.nav-links li{
+.nav-links li {
   list-style: none;
 }
-.nav-links a{
+
+.nav-links a {
   text-decoration: none;
   color: black;
+  transition: color 0.3s ease;
 }
+
 .nav-links a:hover {
   color: #e67e22;
 }
 
 .nav-links a.active {
   color: #d35400;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
+/* Hamburger button */
 .hamburger {
   display: none;
   font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
+  color: black;
 }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
+/* Tablet screens */
 @media (max-width: 1200px) {
-  .navbar{
+  .navbar {
     padding: 1rem 5rem;
   }
-  
 }
 
+/* Mobile screens */
 @media (max-width: 900px) {
-
   .hamburger {
     display: block;
   }
+
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #333;
-    padding: 0;
     position: absolute;
-    top: 4rem;
-    left: 10px;
-    margin: 0;
+    top: 4.5rem;
+    right: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
   }
+
   .nav-links.show {
     display: flex;
-    background-color: white;
-    padding: 2rem 3rem;
-    border-radius: 1rem;
+  }
+
+  .nav-links li {
+    margin: 0.8rem 0;
+    text-align: center;
   }
 }
 
+/* Small mobile */
 @media (max-width: 500px) {
-  .navbar{
+  .navbar {
     padding: 1rem 1.5rem;
   }
 }

@@ -37,11 +37,11 @@ function App() {
         </button>
         
         <ul className={`nav-links ${isopen? "show": ""}`}>
-          <li><Link to={"/"}>Home</Link></li>
-          <li><Link to={"/recipes"}  >Recipes</Link></li>
-          <li><Link to={"/favorites"}>Favorite</Link></li>
-          <li><Link to={"/about"} >About</Link></li>
-          <li><Link to={"/contact"}  >Contact</Link></li>
+          <li><Link to={"/"} onClick={() => setIsOpen(false)}>Home</Link></li>
+          <li><Link to={"/recipes"} onClick={() => setIsOpen(false)}  >Recipes</Link></li>
+          <li><Link to={"/favorites"} onClick={() => setIsOpen(false)}>Favorite</Link></li>
+          <li><Link to={"/about"} onClick={() => setIsOpen(false)} >About</Link></li>
+          <li><Link to={"/contact"} onClick={() => setIsOpen(false)}  >Contact</Link></li>
         </ul>
 
       </nav>
