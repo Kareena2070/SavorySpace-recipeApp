@@ -121,7 +121,7 @@ p {
 
 /* ---------- Recipe Card Styling ---------- */
 .list img {
-  width: 450px;
+  width: 100%;
   height: 350px;
   border-radius: 1rem;
   object-fit: cover;
