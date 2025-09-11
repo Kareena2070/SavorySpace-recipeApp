@@ -90,7 +90,7 @@ function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites
 
         {favorites.length > 0 && (
           <button
-            className={styles.addButton}
+            className={styles.favAllButton}
             onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
           >
             {showFavoritesOnly ? "Show All Recipes" : "Your Favorite Recipes"}
