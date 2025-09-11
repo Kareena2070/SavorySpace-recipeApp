@@ -13,8 +13,13 @@ import calorieImg from '../assets/calories.png'
 import styles from './home.module.css'
 
 
-function Home({setShowForm}){
-
+function Home({setShowForm, recipesList, favorites}){
+    const totalRecipes = recipesList.length;
+    const totalFavorites = favorites.length;
+    const totalCalories = recipesList.reduce(
+      (sum, r) => sum + Number(r.calories || 0),
+      0
+    );
 
     return(
         <div className={styles.big}>
@@ -26,21 +31,21 @@ function Home({setShowForm}){
                     <img src={recipeImg} alt="Recpice" />
                     <div className={styles.dashboardItem}>
                         <p>Total Recipes</p>
-                        <h1>0</h1>
+                        <h1>{totalRecipes}</h1>
                     </div>
                 </div>
                 <div className={styles.dashboardItems}>
                     <img src={favoriteImg} alt="favorite" />
                     <div className={styles.dashboardItem}>
                         <p>Total Favorites</p>
-                        <h1>0</h1>
+                        <h1>{totalFavorites}</h1>
                     </div>
                 </div>
                 <div className={styles.dashboardItems}>
                     <img src={calorieImg} alt="Calories" />
                     <div className={styles.dashboardItem}>
                         <p>Total calories</p>
-                        <h1>0</h1>
+                        <h1>{totalCalories}</h1>
                     </div>
                 </div>
             </div>
@@ -52,8 +57,8 @@ function Home({setShowForm}){
                     <img className={styles.imgLogo} src={logo} alt="recipe.logo" />
                 </div>
                 <div className={styles.text}>
-                    <p>🍳 Discover simple and tasty recipes 🍳</p>
-                    <p>From quick weeknight dinners to weekend treats, find the perfect recipe for every occasion!</p>
+                    <p>🍴 Your personalized recipe dashboard 🍴</p>
+                    <p>Discover new dishes, save what you love, and stay mindful of calories while cooking.</p>``
                 </div>
                 <div className={styles.cards}>
                     <Link to="/recipes" className={styles.noLinkStyle}>
