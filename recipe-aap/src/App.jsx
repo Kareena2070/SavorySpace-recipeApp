@@ -23,8 +23,8 @@ function App() {
   const [recipesList, setRecipesList] = useState([]);
   const [showForm, setShowForm] = useState(false)
   const [isopen, setIsOpen] = useState(false)
-  const [favorites, setFavorites] = useState([]);   // ✅ favorites state
-  const [user, setUser] = useState(null); // ✅ logged-in user
+  const [favorites, setFavorites] = useState([]);   
+  const [user, setUser] = useState(null); 
   
 
   return (
@@ -44,6 +44,7 @@ function App() {
           <button className="top-hamburger" onClick={() => setIsOpen(!isopen)}>
             ⋮
           </button>
+          
         </nav>
 
 
@@ -54,6 +55,8 @@ function App() {
           onClick={()=> setIsOpen(!isopen)}>
           ☰
           </button>
+
+          
           
           <ul className={`nav-links ${isopen? "show": ""}`}>
             <li><Link to={"/"} onClick={() => setIsOpen(false)}>Home</Link></li>

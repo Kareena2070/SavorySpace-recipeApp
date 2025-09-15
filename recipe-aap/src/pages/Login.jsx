@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";   // ✅ import navigation hook
 
 import './login.css'
 
 function LoginSignup({ setUser }) {
   const [isSignup, setIsSignup] = useState(false);
   const [message, setMessage] = useState(""); 
+  const navigate = useNavigate();  // ✅ hook for redirect
 
   const SHEET_URL =
-    "https://sheet.best/api/sheets/f6a265a1-51cf-44dd-b0dd-583b563068af"; 
+    "https://sheetdb.io/api/v1/kqv2a33cykmpx"; 
 
     async function handleSubmit(e) {
       e.preventDefault();
@@ -27,8 +29,9 @@ function LoginSignup({ setUser }) {
         }
     
         // Check if user already exists (by email only)
-        const res = await fetch(`${SHEET_URL}/email/${email}`);
-        const existing = await res.json();
+        // const res = await fetch(`${SHEET_URL}/email/${email}`);   //this will work on sheet.best api
+        const res = await fetch(`${SHEET_URL}/search?email=${email}`);        //a bit change for sheetDB api
+        const existing = await res.json(); 
         if (existing.length > 0) {
           setMessage("User already signed up. Please login.");
           return;
@@ -38,7 +41,8 @@ function LoginSignup({ setUser }) {
         await fetch(SHEET_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, password }),
+          // body: JSON.stringify({ name, email, password }),    //this will work on sheet.best api
+          body: JSON.stringify([{ name, email, password }]),          //a bit change for sheetDB api
         });
     
         setMessage("Signup successful! You can now login.");
@@ -46,7 +50,8 @@ function LoginSignup({ setUser }) {
     
       } else {
         // --- LOGIN ---
-        const res = await fetch(`${SHEET_URL}/email/${email}`);
+        // const res = await fetch(`${SHEET_URL}/email/${email}`);
+        const res = await fetch(`${SHEET_URL}/search?email=${email}`);
         const users = await res.json();
     
         if (users.length === 0) {
@@ -54,8 +59,9 @@ function LoginSignup({ setUser }) {
         } else {
           const user = users[0];
           if (user.password === password) {
-            setMessage(`Welcome back, ${user.name}!`);
-            setUser(user); // ✅ send user to App
+            // setMessage(`Welcome back, ${user.name}!`);
+            setUser(user); 
+            navigate("/");   // ✅ redirect to Home page
           } else {
             setMessage("Incorrect password. Please try again.");
           }
