@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #fff8f0;
+  background-color: #fdfadf !important;
   color: black;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
@@ -116,7 +116,7 @@ body {
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #d35400;
+  color:#f87630;
 }
 
 .top-nav-links {
@@ -149,7 +149,7 @@ body {
 }
 
 /* Mobile for top navbar */
-@media (max-width: 400px) {
+@media (max-width: 350px) {
   .top-nav-links {
     display: none;
     flex-direction: column;
@@ -178,6 +178,10 @@ body {
 
   .logo{
     font-size: 1.5rem;
+  }
+
+  .navbar{
+    display: none;
   }
 }
 

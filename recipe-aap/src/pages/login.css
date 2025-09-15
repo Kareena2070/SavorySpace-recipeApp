@@ -1,0 +1,128 @@
+/* ---------- Auth Container ---------- */
+
+.auth-form h1 {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    color: #333;
+    font-weight: 700;
+  }
+  
+
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    min-height: 80vh;
+  }
+  
+  .auth-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    color: #333;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  
+  /* ---------- Auth Form ---------- */
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 420px;
+  }
+  
+  .auth-form label {
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  
+  .auth-form input {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.7rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    width: 100%;
+    transition: border-color 0.2s ease;
+  }
+  
+  .auth-form input:focus {
+    outline: none;
+    border-color: #f87630;
+  }
+  
+  /* ---------- Buttons ---------- */
+  .auth-form button {
+    background: #f87630;
+    color: white;
+    padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.2rem);
+    border: none;
+    border-radius: 0.8rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .auth-form button:hover {
+    background: #ed5604;
+    transform: scale(1.03);
+  }
+  
+  /* ---------- Auth Message ---------- */
+  .auth-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 500;
+    color: #2c3e50;
+  }
+  
+  /* ---------- Toggle Text ---------- */
+  .toggle-text {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: #555;
+  }
+  
+  .toggle-text span {
+    color: #f87630;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .toggle-text span:hover {
+    color: #ed5604;
+  }
+  
+  /* ---------- Mobile Adjustments ---------- */
+  @media (max-width: 570px) {
+    .auth-form {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .auth-container {
+      padding: 2rem 0.8rem;
+    }
+  
+    .auth-form {
+      padding: 1.2rem;
+    }
+  }
+  
