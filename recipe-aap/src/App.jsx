@@ -77,6 +77,7 @@ function App() {
         setShowForm={setShowForm}
         recipesList={recipesList}
             favorites={favorites}
+            user={user}    
         />}/>
         <Route path='/recipes' element={<Recipes
         recipesList ={recipesList}
@@ -85,6 +86,7 @@ function App() {
         setShowForm={setShowForm}
         favorites={favorites}
         setFavorites={setFavorites}
+        user={user}    
         />}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>

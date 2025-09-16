@@ -4,7 +4,7 @@ import styles from './recipe.module.css'
 import defaultImg from '../assets/defaultImg.png'
 import { useState } from 'react'
 
-function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites, setFavorites }) {
+function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites, setFavorites, user }) {
   const [formData, setFormData] = useState({
     title: "",
     ingredients: "",
@@ -83,7 +83,14 @@ function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites
             </div>
           </form>
         ) : (
-          <button onClick={() => setShowForm(true)} className={styles.addButton}>
+          <button onClick={() => {
+            if (!user) {
+              alert("Please login to add your recipe.");
+              return;
+            }
+            setShowForm(true);
+          }}
+          className={styles.addButton}>
             Add New Recipe
           </button>
         )}

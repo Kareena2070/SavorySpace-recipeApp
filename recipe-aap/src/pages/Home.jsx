@@ -13,7 +13,7 @@ import calorieImg from '../assets/calories.png'
 import styles from './home.module.css'
 
 
-function Home({setShowForm, recipesList, favorites}){
+function Home({setShowForm, recipesList, favorites, user}){
     const totalRecipes = recipesList.length;
     const totalFavorites = favorites.length;
     const totalCalories = recipesList.reduce(
@@ -62,8 +62,14 @@ function Home({setShowForm, recipesList, favorites}){
                 </div>
                 <div className={styles.cards}>
                     <Link to="/recipes" className={styles.noLinkStyle}>
-                        <button className={styles.button} onClick={()=>setShowForm(true) }>Add your recipe</button>
-                    </Link>
+                        <button className={styles.button} onClick={() => {
+                                    if (!user) {
+                                        alert("Please login to add your recipe."); // short message
+                                        return;
+                                    }
+                                    setShowForm(true);
+                                    }}>
+                                        Add your recipe</button> </Link>
                 </div>
             </div>
 
