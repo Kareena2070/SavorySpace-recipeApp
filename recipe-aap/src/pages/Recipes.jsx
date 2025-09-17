@@ -2,6 +2,11 @@
 import styles from './recipe.module.css'
 // default image for recipe
 import defaultImg from '../assets/defaultImg.png'
+
+// improt toastify
+import { toast } from "react-toastify";
+
+
 import { useState } from 'react'
 
 function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites, setFavorites, user }) {
@@ -85,7 +90,7 @@ function Recipes({ recipesList, setRecipesList, setShowForm, showForm, favorites
         ) : (
           <button onClick={() => {
             if (!user) {
-              alert("Please login to add your recipe.");
+              toast.warning("Please login to add your recipe!"); 
               return;
             }
             setShowForm(true);

@@ -6,15 +6,13 @@ import Home from './pages/Home'
 import Recipes from './pages/Recipes'
 import About from './pages/About'
 import Contact from './pages/Contact'
-
-// import Login from './pages/Login'
-import { useState } from 'react'
-
-// import LoginSigup
-
 import LoginSigup from './pages/Login'
 
+// import toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import { useState } from 'react'
 function App() {
 
   const [recipesList, setRecipesList] = useState([]);
@@ -28,7 +26,7 @@ function App() {
     <>
     <div>
         <nav className="top-navbar">
-          <h1 className="logo">Recipe App</h1>
+          <h1 className="logo">SavorySpace</h1>
 
           <ul className={`top-nav-links `}>
             {user ? (
@@ -94,6 +92,17 @@ function App() {
         />}/>
 
       </Routes>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        // theme="colored"
+      />
     </>
   )
 }

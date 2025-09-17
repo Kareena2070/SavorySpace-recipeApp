@@ -1,5 +1,3 @@
-import logo from '../assets/logo.png'
-
 // improt link so to connect different pages
 import {Link} from "react-router-dom"
 
@@ -7,7 +5,10 @@ import {Link} from "react-router-dom"
 import recipeImg from '../assets/recipe.png'
 import favoriteImg from '../assets/favorite.png'
 import calorieImg from '../assets/calories.png'
+import logo from '../assets/logo.png'
 
+// improt toastify 
+import { toast } from "react-toastify";
 
 // style file improted
 import styles from './home.module.css'
@@ -57,14 +58,14 @@ function Home({setShowForm, recipesList, favorites, user}){
                     <img className={styles.imgLogo} src={logo} alt="recipe.logo" />
                 </div>
                 <div className={styles.text}>
-                    <p>🍴 Your personalized recipe dashboard 🍴</p>
-                    <p>Discover new dishes, save what you love, and stay mindful of calories while cooking.</p>``
+                    <p>🍴From Your Kitchen to Everyone's Feed🍴</p>
+                    <p>Discover new dishes, save what you love, and stay mindful of calories while cooking.</p>
                 </div>
                 <div className={styles.cards}>
                     <Link to="/recipes" className={styles.noLinkStyle}>
                         <button className={styles.button} onClick={() => {
                                     if (!user) {
-                                        alert("Please login to add your recipe."); // short message
+                                        toast.warning("Please login to add your recipe!"); 
                                         return;
                                     }
                                     setShowForm(true);
